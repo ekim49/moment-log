@@ -12,7 +12,7 @@ const colors = {
 };
 
 const fontSize = {
-	logo: 40,
+	logo: 25,
 	title: 25,
 	date: 16,
 	weather: 16,
