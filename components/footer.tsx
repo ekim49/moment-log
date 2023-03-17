@@ -29,7 +29,7 @@ export default function Footer(): JSX.Element {
 					alt='Github Link'
 				/>
 			</a>
-			<FooterText>2023 ⓒ ekim49</FooterText>
+			<FooterText>2023 ekim49</FooterText>
 		</FooterContainer>
 	);
 }

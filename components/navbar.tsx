@@ -51,7 +51,7 @@ const LoginBtn = styled.button`
 	cursor: pointer;
 `;
 
-export default function Navbar(): JSX.Element {
+export default function Navbar() {
 	return (
 		<NavContainer>
 			<Logo>MomentLog</Logo>
