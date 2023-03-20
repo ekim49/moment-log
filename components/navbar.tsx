@@ -6,10 +6,11 @@ const NavContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 100vw;
+	width: 100%;
 	height: 55px;
 	padding: 10px 30px;
 	border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+	z-index: 999;
 `;
 
 const NavButtons = styled.div`
@@ -51,13 +52,19 @@ const LoginBtn = styled.button`
 	cursor: pointer;
 `;
 
-export default function Navbar() {
+type ToggleModal = () => void;
+
+export interface ILoginModalProps {
+	toggleModal: ToggleModal;
+}
+
+export default function Navbar({ toggleModal }: ILoginModalProps) {
 	return (
 		<NavContainer>
 			<Logo>MomentLog</Logo>
 			<NavButtons>
 				<ThemeBtn_Dark></ThemeBtn_Dark>
-				<LoginBtn>로그인</LoginBtn>
+				<LoginBtn onClick={toggleModal}>로그인</LoginBtn>
 			</NavButtons>
 		</NavContainer>
 	);

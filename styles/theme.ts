@@ -4,7 +4,7 @@ import { DefaultTheme } from 'styled-components';
 const colors = {
 	black1: '#303030',
 	gray: '#BDBDBD',
-	white: '#ffffff',
+	white: '#f5f5fa',
 	blue1: '#03A9F4',
 	blue2: '#2196F3',
 	red: '#EF5350',
