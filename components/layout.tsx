@@ -4,18 +4,6 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import LoginModal from './login-modal';
 
-const LayoutContainer = styled.div`
-	width: 100vw;
-	height: 100%;
-`;
-
-const MainContents = styled.div`
-	position: relative;
-	width: 100%;
-	min-height: calc(100vh - 105px);
-	padding: 10px 30px;
-`;
-
 export default function Layout({
 	children,
 	home,
@@ -40,3 +28,15 @@ export default function Layout({
 		</LayoutContainer>
 	);
 }
+
+const LayoutContainer = styled.div`
+	width: 100vw;
+	height: 100%;
+`;
+
+const MainContents = styled.div`
+	position: relative;
+	width: 100%;
+	min-height: calc(100vh - 105px);
+	padding: 10px 30px;
+`;

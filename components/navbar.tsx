@@ -1,6 +1,24 @@
 import { theme } from '@/styles/theme';
 import styled from 'styled-components';
 
+type ToggleModal = () => void;
+
+export interface ILoginModalProps {
+	toggleModal: ToggleModal;
+}
+
+export default function Navbar({ toggleModal }: ILoginModalProps) {
+	return (
+		<NavContainer>
+			<Logo>MomentLog</Logo>
+			<NavButtons>
+				<ThemeBtn_Dark></ThemeBtn_Dark>
+				<LoginBtn onClick={toggleModal}>로그인</LoginBtn>
+			</NavButtons>
+		</NavContainer>
+	);
+}
+
 const NavContainer = styled.div`
 	position: sticky;
 	display: flex;
@@ -51,21 +69,3 @@ const LoginBtn = styled.button`
 	border-radius: 4px;
 	cursor: pointer;
 `;
-
-type ToggleModal = () => void;
-
-export interface ILoginModalProps {
-	toggleModal: ToggleModal;
-}
-
-export default function Navbar({ toggleModal }: ILoginModalProps) {
-	return (
-		<NavContainer>
-			<Logo>MomentLog</Logo>
-			<NavButtons>
-				<ThemeBtn_Dark></ThemeBtn_Dark>
-				<LoginBtn onClick={toggleModal}>로그인</LoginBtn>
-			</NavButtons>
-		</NavContainer>
-	);
-}
