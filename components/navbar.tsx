@@ -1,19 +1,27 @@
 import { theme } from '@/styles/theme';
+import Link from 'next/link';
 import styled from 'styled-components';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import UserProfile from './user-profile';
 
-type ToggleModal = () => void;
+export default function Navbar() {
+	const { data, status } = useSession();
 
-export interface ILoginModalProps {
-	toggleModal: ToggleModal;
-}
-
-export default function Navbar({ toggleModal }: ILoginModalProps) {
 	return (
 		<NavContainer>
 			<Logo>MomentLog</Logo>
 			<NavButtons>
 				<ThemeBtn_Dark></ThemeBtn_Dark>
-				<LoginBtn onClick={toggleModal}>로그인</LoginBtn>
+				{data?.user ? (
+					//
+					<button type='button' onClick={() => signOut()}>
+						로그아웃
+					</button>
+				) : (
+					<Link href='/login'>
+						<LoginBtn>로그인</LoginBtn>
+					</Link>
+				)}
 			</NavButtons>
 		</NavContainer>
 	);
@@ -27,7 +35,7 @@ const NavContainer = styled.div`
 	width: 100%;
 	height: 55px;
 	padding: 10px 30px;
-	border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+	border-bottom: 1px solid ${({ theme }) => theme.colors.grey};
 	z-index: 999;
 `;
 
@@ -58,14 +66,14 @@ const ThemeBtn_Dark = styled.div`
 	width: 40px;
 	height: 40px;
 	border-radius: 50px;
-	border: 1px solid ${({ theme }) => theme.colors.gray};
+	border: 1px solid ${({ theme }) => theme.colors.grey};
 	cursor: pointer;
 `;
 
 const LoginBtn = styled.button`
 	width: 80px;
 	height: 40px;
-	border: 1px solid ${({ theme }) => theme.colors.gray};
+	border: 1px solid ${({ theme }) => theme.colors.grey};
 	border-radius: 4px;
 	cursor: pointer;
 `;
