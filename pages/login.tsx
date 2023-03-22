@@ -3,8 +3,14 @@ import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import styled from 'styled-components';
 
+interface LoginProvider {
+	provider: string;
+	imageSrc: string;
+	alt: string;
+}
+
 export default function Login() {
-	const loginProviders = [
+	const loginProviders: LoginProvider[] = [
 		{
 			provider: 'google',
 			imageSrc: '/images/google.png',
