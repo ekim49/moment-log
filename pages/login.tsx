@@ -41,12 +41,20 @@ export default function Login() {
 									height={55}
 								/>
 							</OAuthBtn>
-							<Image
-								src='/images/kakao.png'
-								alt='Google Login Button'
-								width={55}
-								height={55}
-							/>
+							<OAuthBtn
+								onClick={() =>
+									signIn('kakao', {
+										callbackUrl: '/',
+									})
+								}
+							>
+								<Image
+									src='/images/kakao.png'
+									alt='Google Login Button'
+									width={55}
+									height={55}
+								/>
+							</OAuthBtn>
 							<Image
 								src='/images/github.png'
 								alt='Google Login Button'

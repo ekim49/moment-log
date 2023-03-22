@@ -9,6 +9,12 @@ const nextConfig = {
 				port: '',
 				pathname: '/a/**',
 			},
+			{
+				protocol: 'http',
+				hostname: 'k.kakaocdn.net',
+				port: '',
+				pathname: '/dn/**',
+			},
 		],
 	},
 };
