@@ -1,22 +1,19 @@
 import { theme } from '@/styles/theme';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import UserProfile from './user-profile';
 
 export default function Navbar() {
-	const { data, status } = useSession();
+	const { data: session, status } = useSession();
 
 	return (
 		<NavContainer>
 			<Logo>MomentLog</Logo>
 			<NavButtons>
 				<ThemeBtn_Dark></ThemeBtn_Dark>
-				{data?.user ? (
-					//
-					<button type='button' onClick={() => signOut()}>
-						로그아웃
-					</button>
+				{session ? (
+					<UserProfile />
 				) : (
 					<Link href='/login'>
 						<LoginBtn>로그인</LoginBtn>
