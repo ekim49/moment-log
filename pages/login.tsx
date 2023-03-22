@@ -35,7 +35,7 @@ export default function Login() {
 					<ContainerImg>
 						<Image
 							src='/images/login.png'
-							alt='Login Modal Image'
+							alt='Login Page Image'
 							width={250}
 							height={300}
 						/>

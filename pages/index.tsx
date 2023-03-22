@@ -1,8 +1,7 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Layout from '@/components/layout';
 import MyPage from './mypage';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 
 export default function Home() {
 	const { data: session, status } = useSession();

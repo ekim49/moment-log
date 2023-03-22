@@ -1,7 +1,7 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 
-interface UserData {
+export interface UserData {
 	name: string;
 	email: string;
 	image: string;
