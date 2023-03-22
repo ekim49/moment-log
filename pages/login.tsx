@@ -50,17 +50,25 @@ export default function Login() {
 							>
 								<Image
 									src='/images/kakao.png'
-									alt='Google Login Button'
+									alt='Kakao Login Button'
 									width={55}
 									height={55}
 								/>
 							</OAuthBtn>
-							<Image
-								src='/images/github.png'
-								alt='Google Login Button'
-								width={55}
-								height={55}
-							/>
+							<OAuthBtn
+								onClick={() =>
+									signIn('github', {
+										callbackUrl: '/',
+									})
+								}
+							>
+								<Image
+									src='/images/github.png'
+									alt='Github Login Button'
+									width={55}
+									height={55}
+								/>
+							</OAuthBtn>
 						</OAuthBtnContainer>
 						<ContainerLink>
 							<OAuthLabel>아직 회원이 아니신가요?</OAuthLabel>
