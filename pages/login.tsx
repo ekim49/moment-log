@@ -1,13 +1,16 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import styled from 'styled-components';
-import type { ILoginModalProps } from './navbar';
 
-export default function LoginModal({ toggleModal }: ILoginModalProps) {
+export default function Login() {
+	const { data, status } = useSession();
+
 	return (
 		<>
 			<Background>
-				<ModalContainer>
-					<ModalImg>
+				<Container>
+					<ContainerImg>
 						<Image
 							src='/images/login.png'
 							alt='Login Modal Image'
@@ -19,25 +22,25 @@ export default function LoginModal({ toggleModal }: ILoginModalProps) {
 								Mobile illustrations by Storyset
 							</a>
 						</p>
-					</ModalImg>
-					<ModalContent>
-						<CloseBtn onClick={toggleModal}>
-							<Image
-								src='/icons/close.png'
-								alt='Close Modal Button'
-								width={15}
-								height={15}
-							/>
-						</CloseBtn>
+					</ContainerImg>
+					<ContainerContent>
 						<h1>Sign in</h1>
-						<OAuthLoginLabel>소셜 계정으로 로그인</OAuthLoginLabel>
+						<OAuthLabel>소셜 계정으로 로그인</OAuthLabel>
 						<OAuthBtnContainer>
-							<Image
-								src='/images/google.png'
-								alt='Google Login Button'
-								width={55}
-								height={55}
-							/>
+							<OAuthBtn
+								onClick={() =>
+									signIn('google', {
+										callbackUrl: '/',
+									})
+								}
+							>
+								<Image
+									src='/images/google.png'
+									alt='Google Login Button'
+									width={55}
+									height={55}
+								/>
+							</OAuthBtn>
 							<Image
 								src='/images/kakao.png'
 								alt='Google Login Button'
@@ -51,18 +54,18 @@ export default function LoginModal({ toggleModal }: ILoginModalProps) {
 								height={55}
 							/>
 						</OAuthBtnContainer>
-						<SignupLinkContainer>
-							<OAuthLoginLabel>아직 회원이 아니신가요?</OAuthLoginLabel>
-							<a>회원 가입</a>
-						</SignupLinkContainer>
-					</ModalContent>
-				</ModalContainer>
+						<ContainerLink>
+							<OAuthLabel>아직 회원이 아니신가요?</OAuthLabel>
+							<Link href='/signup'>회원 가입</Link>
+						</ContainerLink>
+					</ContainerContent>
+				</Container>
 			</Background>
 		</>
 	);
 }
 
-const Background = styled.div`
+export const Background = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -74,10 +77,10 @@ const Background = styled.div`
 	width: 100%;
 	height: 100%;
 	/* z-index: 999; */
-	background-color: rgba(0, 0, 0, 0.1);
+	background-color: ${({ theme }) => theme.colors.background};
 `;
 
-const ModalContainer = styled.div`
+export const Container = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
@@ -91,7 +94,7 @@ const ModalContainer = styled.div`
 	box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
 `;
 
-const ModalImg = styled.div`
+export const ContainerImg = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -111,7 +114,7 @@ const ModalImg = styled.div`
 	}
 `;
 
-const ModalContent = styled.div`
+export const ContainerContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -125,22 +128,14 @@ const ModalContent = styled.div`
 	}
 `;
 
-const CloseBtn = styled.div`
-	position: absolute;
-	top: 15px;
-	right: 15px;
-	cursor: pointer;
-	opacity: 0.5;
-`;
-
-const OAuthLoginLabel = styled.div`
-	color: ${({ theme }) => theme.colors.gray};
+export const OAuthLabel = styled.div`
+	color: ${({ theme }) => theme.colors.grey};
 	font-weight: 500;
 	font-size: ${({ theme }) => theme.fontSize.text}px;
 	margin: 10px 0px;
 `;
 
-const OAuthBtnContainer = styled.div`
+export const OAuthBtnContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -151,7 +146,18 @@ const OAuthBtnContainer = styled.div`
 	border: none;
 `;
 
-const SignupLinkContainer = styled.div`
+export const OAuthBtn = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 55px;
+	height: 55px;
+	border-radius: 50px;
+	border: 1px solid ${({ theme }) => theme.colors.lightgrey};
+	cursor: pointer;
+`;
+
+export const ContainerLink = styled.div`
 	margin-top: 50px;
 	font-weight: 500;
 `;

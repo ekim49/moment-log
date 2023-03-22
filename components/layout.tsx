@@ -1,8 +1,6 @@
 import Footer from './footer';
 import Navbar from './navbar';
 import styled from 'styled-components';
-import { useState } from 'react';
-import LoginModal from './login-modal';
 
 export default function Layout({
 	children,
@@ -11,19 +9,10 @@ export default function Layout({
 	children: React.ReactNode;
 	home?: boolean;
 }) {
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-	const toggleModal = () => {
-		setIsModalOpen(!isModalOpen);
-	};
-
 	return (
 		<LayoutContainer>
-			<Navbar toggleModal={toggleModal} />
-			<MainContents>
-				{isModalOpen && <LoginModal toggleModal={toggleModal} />}
-				{children}
-			</MainContents>
+			<Navbar />
+			<MainContents>{children}</MainContents>
 			<Footer />
 		</LayoutContainer>
 	);

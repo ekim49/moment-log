@@ -26,7 +26,7 @@ const FooterContainer = styled.div`
 	width: 100%;
 	height: 50px;
 	padding: 10px 30px;
-	border-top: 1px solid ${({ theme }) => theme.colors.gray};
+	border-top: 1px solid ${({ theme }) => theme.colors.grey};
 `;
 
 const FooterText = styled.footer`

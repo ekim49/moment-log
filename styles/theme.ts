@@ -2,8 +2,10 @@
 import { DefaultTheme } from 'styled-components';
 
 const colors = {
+	background: '#f7f7f7',
 	black1: '#303030',
-	gray: '#BDBDBD',
+	lightgrey: '#e1e2e3',
+	grey: '#BDBDBD',
 	white: '#f5f5fa',
 	blue1: '#03A9F4',
 	blue2: '#2196F3',
