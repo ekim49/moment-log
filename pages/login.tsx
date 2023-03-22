@@ -1,10 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 import styled from 'styled-components';
 
 export default function Login() {
-	const { data, status } = useSession();
+	const loginProviders = [
+		{
+			provider: 'google',
+			imageSrc: '/images/google.png',
+			alt: 'Google Login Button',
+		},
+		{
+			provider: 'kakao',
+			imageSrc: '/images/kakao.png',
+			alt: 'Kakao Login Button',
+		},
+		{
+			provider: 'github',
+			imageSrc: '/images/github.png',
+			alt: 'Github Login Button',
+		},
+	];
 
 	return (
 		<>
@@ -27,40 +43,21 @@ export default function Login() {
 						<h1>Sign in</h1>
 						<OAuthLabel>소셜 계정으로 로그인</OAuthLabel>
 						<OAuthBtnContainer>
-							<OAuthBtn
-								onClick={() =>
-									signIn('google', {
-										callbackUrl: '/',
-									})
-								}
-							>
-								<Image
-									src='/images/google.png'
-									alt='Google Login Button'
-									width={55}
-									height={55}
-								/>
-							</OAuthBtn>
-							<OAuthBtn
-								onClick={() =>
-									signIn('kakao', {
-										callbackUrl: '/',
-									})
-								}
-							>
-								<Image
-									src='/images/kakao.png'
-									alt='Google Login Button'
-									width={55}
-									height={55}
-								/>
-							</OAuthBtn>
-							<Image
-								src='/images/github.png'
-								alt='Google Login Button'
-								width={55}
-								height={55}
-							/>
+							{loginProviders.map((provider) => (
+								<OAuthBtn
+									key={provider.provider}
+									onClick={() =>
+										signIn(provider.provider, { callbackUrl: '/' })
+									}
+								>
+									<Image
+										src={provider.imageSrc}
+										alt={provider.alt}
+										width={55}
+										height={55}
+									/>
+								</OAuthBtn>
+							))}
 						</OAuthBtnContainer>
 						<ContainerLink>
 							<OAuthLabel>아직 회원이 아니신가요?</OAuthLabel>
@@ -115,10 +112,6 @@ export const ContainerImg = styled.div`
 	> p {
 		color: ${({ theme }) => theme.colors.white};
 		font-size: ${({ theme }) => theme.fontSize.text_small}px;
-		/* position: relative; */
-		/* margin-top: -20px;
-		z-index: 100; */
-		/* text-align: end; */
 	}
 `;
 
@@ -150,7 +143,6 @@ export const OAuthBtnContainer = styled.div`
 	align-items: center;
 	width: 260px;
 	height: 70px;
-	/* margin: 30px 0px; */
 	border: none;
 `;
 
