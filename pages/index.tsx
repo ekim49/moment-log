@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Layout from '@/components/layout';
 import MyPage from './mypage';
 import { useSession } from 'next-auth/react';
+import Welcome from '@/components/welcome';
 
 export default function Home() {
 	const { data: session, status } = useSession();
@@ -21,7 +22,7 @@ export default function Home() {
 					href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css'
 				/>
 			</Head>
-			{session ? <MyPage /> : <div>로그인 안한 홈</div>}
+			{session ? <MyPage /> : <Welcome />}
 		</Layout>
 	);
 }

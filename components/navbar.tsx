@@ -25,7 +25,7 @@ export default function Navbar() {
 }
 
 const NavContainer = styled.div`
-	position: sticky;
+	position: absolute;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
