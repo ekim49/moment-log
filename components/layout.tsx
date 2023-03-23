@@ -24,8 +24,13 @@ const LayoutContainer = styled.div`
 `;
 
 const MainContents = styled.div`
-	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
 	width: 100%;
-	min-height: calc(100vh - 105px);
+	height: calc(100vh - 105px);
+	top: 55px;
+	bottom: 50px;
 	padding: 10px 30px;
 `;

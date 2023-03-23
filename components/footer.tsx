@@ -18,7 +18,7 @@ export default function Footer(): JSX.Element {
 }
 
 const FooterContainer = styled.div`
-	position: relative;
+	position: absolute;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -27,6 +27,7 @@ const FooterContainer = styled.div`
 	height: 50px;
 	padding: 10px 30px;
 	border-top: 1px solid ${({ theme }) => theme.colors.grey};
+	bottom: 0;
 `;
 
 const FooterText = styled.footer`
