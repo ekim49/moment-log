@@ -70,7 +70,13 @@ export default function Carousel() {
 		<CarouselContainer>
 			<SlideContainer ref={slideRef}>
 				{carouselImages.map((image) => (
-					<Image src={image.imgSrc} alt={image.alt} width={650} height={350} />
+					<Image
+						src={image.imgSrc}
+						alt={image.alt}
+						width={650}
+						height={350}
+						key={image.id}
+					/>
 				))}
 			</SlideContainer>
 			<ButtonContainer>
