@@ -14,21 +14,17 @@ export async function getUserById(id: string) {
 		const user = await prisma.user.findUnique({ where: { id } });
 		return { user };
 	} catch (error) {
-		return { error };
+		return null;
 	}
 }
 
-export async function createUser(
-	name: string,
-	email: string,
-	imageUrl: string
-) {
+export async function createUser(name: string, email: string, image: string) {
 	try {
 		const user = await prisma.user.create({
 			data: {
 				name,
 				email,
-				imageUrl,
+				image,
 				bookmarks: [],
 			},
 		});

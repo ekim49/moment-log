@@ -1,7 +1,7 @@
 import { theme } from '@/styles/theme';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useSession } from 'next-auth/react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import UserProfile from './user-profile';
 
 export default function Navbar() {
