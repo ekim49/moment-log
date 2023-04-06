@@ -52,6 +52,20 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Post {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  title    String
+  body     String
+  author   User      @relation(fields: [authorId], references: [id])
+  authorId String    @db.ObjectId
+  weather  String
+  location String
+  imageUrl String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  bookmark Boolean   @default(false)
+}
+
 // model VerificationToken {
 //   identifier String
 //   token      String   @unique
