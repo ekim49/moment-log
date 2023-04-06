@@ -17,8 +17,8 @@ export default async function handler(
 		}
 		if (req.method === 'POST') {
 			try {
-				const { name, email, imageUrl } = req.body;
-				const user = await createUser(name, email, imageUrl);
+				const { name, email, image } = req.body;
+				const user = await createUser(name, email, image);
 				return res.status(200).json(user);
 			} catch (error) {
 				return res.status(500).json(error);

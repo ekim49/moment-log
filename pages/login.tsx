@@ -3,31 +3,31 @@ import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import styled from 'styled-components';
 
-interface LoginProvider {
+export interface LoginProvider {
 	provider: string;
 	imageSrc: string;
 	alt: string;
 }
 
-export default function Login() {
-	const loginProviders: LoginProvider[] = [
-		{
-			provider: 'google',
-			imageSrc: '/images/google.png',
-			alt: 'Google Login Button',
-		},
-		{
-			provider: 'kakao',
-			imageSrc: '/images/kakao.png',
-			alt: 'Kakao Login Button',
-		},
-		{
-			provider: 'github',
-			imageSrc: '/images/github.png',
-			alt: 'Github Login Button',
-		},
-	];
+export const loginProviders: LoginProvider[] = [
+	{
+		provider: 'google',
+		imageSrc: '/images/google.png',
+		alt: 'Google Login Button',
+	},
+	{
+		provider: 'kakao',
+		imageSrc: '/images/kakao.png',
+		alt: 'Kakao Login Button',
+	},
+	{
+		provider: 'github',
+		imageSrc: '/images/github.png',
+		alt: 'Github Login Button',
+	},
+];
 
+export default function Login() {
 	return (
 		<>
 			<Background>
